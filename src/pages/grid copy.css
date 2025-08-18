@@ -1,0 +1,42 @@
+/* Minimalistic black background with crisp white grid lines */
+
+/* container */
+.bw-grid-bg {
+  /* subtle vertical gradient, very dark */
+  background: linear-gradient(180deg, #000000 0%, #0b0b0b 100%);
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* single simple grid layer (horizontal + vertical) */
+.bw-grid-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* crisp white 1px lines, transparent otherwise */
+  background-image:
+    linear-gradient(white 1px, transparent 1px),
+    linear-gradient(90deg, white 1px, transparent 1px);
+  /* each square size (adjust to taste) */
+  background-size: 48px 48px;
+  background-position: 0 0;
+  /* line visibility control — raise for stronger lines */
+  opacity: 0.16;
+  pointer-events: none;
+  mix-blend-mode: normal;
+}
+
+/* make sure page content sits above the grid */
+.bw-grid-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* small responsive tweak: smaller squares on small screens */
+@media (max-width: 640px) {
+  .bw-grid-bg::before {
+    background-size: 32px 32px;
+  }
+}
