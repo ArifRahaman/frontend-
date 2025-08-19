@@ -6,7 +6,7 @@ import { Eye, EyeOff, Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
 import { useAuth } from "../AuthContext";
 
 export default function Login() {
-  const BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+  const BASE = import.meta.env.VITE_API_BASE || "https://backend-project-h96z.onrender.com";
   const { login } = useAuth();
 
   const [email, setEmail] = useState("");
